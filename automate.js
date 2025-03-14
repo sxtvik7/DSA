@@ -386,4 +386,73 @@ const findNegTemp = (arr) => {
     return result
 }
 
-console.log(findNegTemp([9, -3, 8, -6, -7, 8, 10]))
+// console.log(findNegTemp([9, -3, 8, -6, -7, 8, 10]))
+// ____________________________________________
+
+function alternateStr(str1, str2){
+    let arr1 = str1.split(",")
+    let arr2 = str2.split(",")
+
+    let result = [];
+
+    // console.log(arr1)
+    // console.log(arr2)
+
+    for (let i = 0; i < arr1.length; i++) {
+        result.push(arr1[i], arr2[i]);
+    }    
+
+    return result.join(",")
+}
+
+// console.log(alternateStr("a,b,c,d", "p,q,r,s")) // "a,p,b,q,c,r,d,s"
+// ____________________________________________
+
+function missingNum(arr) {
+    for(let i = 0; i<arr.length -1; i++){
+
+        if((arr[i+1] - arr[i]) > 1){
+            return arr[i] + 1
+        }
+    }
+    return
+}
+
+// console.log(missingNum([101, 102, 103, 105, 106]))
+
+// ____________________________________________
+
+function stringCompression(str){
+    let count = 1;
+    let result = "";
+
+    for(let i = 0; i<str.length; i++){
+        console.log(str[i], count)
+        if(str[i] === str[i+1]){
+            count++ 
+        } else {
+            result += str[i] + count
+            count = 1
+        }
+    }
+
+    return result.length < str.length ? result : str;
+}
+
+// console.log(stringCompression("aaabbc")) // "a3b2c1"
+
+function nonDecreasing(arr) {
+    for(let i = 0; i<arr.length -1; i++){
+        // console.log(arr[i+1] - arr[i])
+
+        if((arr[i+1] - arr[i]) < 0){
+            arr[i] = 0
+        }
+    }
+
+    return arr
+}
+
+console.log(nonDecreasing([8, 4, 6,]))
+console.log("------")
+console.log(nonDecreasing([-2, 7, -1, 0, 1, 2]))
