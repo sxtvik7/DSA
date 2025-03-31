@@ -1,3 +1,5 @@
+const { model } = require("mongoose");
+
 console.log("Hello world!")
 
 const tempSwap = (a, b) => {
@@ -441,18 +443,115 @@ function stringCompression(str){
 
 // console.log(stringCompression("aaabbc")) // "a3b2c1"
 
-function nonDecreasing(arr) {
-    for(let i = 0; i<arr.length -1; i++){
-        // console.log(arr[i+1] - arr[i])
+// ____________________________________________
 
-        if((arr[i+1] - arr[i]) < 0){
-            arr[i] = 0
+
+// function nonDecreasing(arr) {
+//     let modified = false;
+
+//     for(let i = 0; i<arr.length -1; i++){
+//         if(arr[i] > arr[i+1]){
+
+//             if(modified) return false;
+
+//             modified = true;
+
+//             if(i === 0 || arr[i-1] <= arr[i+1]){
+//                 arr[i] = arr[i+1]
+//             } else {
+//                 arr[i+1] = arr[i]
+//             }
+//         }
+//     }
+//     // console.log(arr)
+//     return true
+// }
+
+function nonDecreasing(arr) {
+    let modified = false;
+
+    for(let i = 0; i < arr.length - 1; i++) {
+        if(arr[i] > arr[i+1]) {
+            if(modified) return false; 
+            modified = true;
+
+            if(i === 0 || arr[i-1] <= arr[i+1]) {
+            } else {
+            }
+        }
+    }
+    return true;
+}
+
+
+// console.log(nonDecreasing([8, 4, 6,]))
+// console.log(nonDecreasing([4, 2, 1]))
+// console.log("------")
+// console.log(nonDecreasing([-2, 7, 1, 0, 1, 2]))
+
+// ____________________________________________
+// Find the Duplicate Number (1 to N)
+function findDuplicate (arr) {
+    let tortoise = arr[0];
+    let hare = arr[0];
+
+    while(true) {
+        tortoise = arr[tortoise]
+        hare = arr[arr[hare]]
+        if(tortoise === hare){
+            break;
+        }
+    }
+
+    tortoise = arr[0];
+
+    while (tortoise !== hare){
+        tortoise = arr[tortoise];
+        hare = arr[hare];
+    }
+    return hare;
+}
+
+// console.log(findDuplicate([3, 1, 3, 4, 2]))
+// console.log(findDuplicate([2, 5, 3, 1, 4, 3])); 
+
+// ____________________________________________
+// First Missing Positive
+
+function firstMissingPositive(arr) {
+    let n = arr.length;
+
+    for(let i = 0; i<n; i++){
+        while (arr[i] > 0 && arr[i] < n && arr[arr[i] -1] !== arr[i]){
+            [arr[arr[i] -1], arr[i]] = [arr[i], arr[arr[i] - 1]]
+        }
+    }
+
+    console.log(arr)
+
+    for(let i = 0; i<n; i++){
+        console.log(`${arr[i]} !== ${i+1} ? ${arr[i] !== i+1}`)
+        if(arr[i] !== i+1){
+            return i + 1;
+        }
+    }
+
+}
+
+// console.log(firstMissingPositive([3, 4, -1, 1]))
+console.log(firstMissingPositive([3, 2, -6, 1, 0]))
+// console.log(firstMissingPositive([7, 8, 1, 11]));
+
+function newSort (arr) {
+    for(let i = 0; i<arr.length; i++){
+        while(arr[i] > 0 && arr[i] < arr.length && arr[arr[i] - 1] !== arr[i]){
+            [arr[arr[i] - 1], arr[i]] = [arr[i], arr[arr[i] - 1]]
         }
     }
 
     return arr
 }
 
-console.log(nonDecreasing([8, 4, 6,]))
-console.log("------")
-console.log(nonDecreasing([-2, 7, -1, 0, 1, 2]))
+
+// console.log(newSort([2, 3, 4, 1, 5]))
+

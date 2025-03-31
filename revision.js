@@ -124,13 +124,16 @@
 // closure(); // Output: ?
 
 //-------------------------------------------------------------
-var person = {
-  name: "John",
-  age: 30,
-  greet: function() {
-    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
-  }
-};
+// var person = {
+//   name: "John",
+//   age: 30,
+//   greet: function() {
+//     console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+//   }
+// };
+
+// console.log(person.greet())
+
 
 // var greetFunction = person.greet;
 // var greetFunction = person.greet.bind(person);
@@ -143,3 +146,16 @@ var person = {
 //-----------------greetFunction(); 
 
 //The greetFunction() is invoked as a standalone function. At this point, the this keyword inside the greet method loses its context. Normally, when greet is called as person.greet(), this refers to the person object. However, when detached and called as greetFunction(), this doesn't refer to any specific object. It will typically refer to the global object (window in a browser environment), or undefined in strict mode.Because this no longer refers to the person object, this.name and this.age inside the greet function are evaluated to undefined, resulting in the output:
+
+
+const numbers = [1, 2, 3, 4, 5];
+const person = { name: "Alice", age: 25 };
+const newPerson = { ...person, city: "New York" };
+
+const [first, second, ...restNumbers] = numbers;
+console.log(`First: ${first}, Second: ${second}, Rest:`, restNumbers);
+
+const { name, ...restDetails } = newPerson;
+console.log("Name:", name, "Rest Details:", restDetails);
+
+
