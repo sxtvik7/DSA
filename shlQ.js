@@ -1,10 +1,23 @@
 // Satvik
-
+console.log("SHL questions")
 // Automata
 // Q1.
 /*A cold storage company has N storage units for various products. The company has received N orders that must be
 preserved at respective N temperatures inside the storage units. The company manager wants to identify which
 products must be preserved at negative temperatures. */
+const findNegTemp = (arr) => {
+
+    let result = []
+
+    for(let item of arr){
+        // console.log(item)
+        if(item < 0){
+            result.push(item)
+        }
+    }
+
+    return result
+}
 
 // Q2. 
 /* An alternate sort of a list consists of alternate elements (starting from the first position) of the given list after sorting
@@ -19,7 +32,7 @@ function altSort(arr){
 
     return result;
 }
-console.log(altSort([7, 2, 9, 4, 1, 5]))
+// console.log(altSort([7, 2, 9, 4, 1, 5]))
 
 // Automata Pro
 
@@ -43,7 +56,7 @@ function findAltStrCount(str, k){
      }
   return count  
  }
- console.log(findAltStrCount("ToddlerToddlerTODDLERtodDler", "toddler"));
+//  console.log(findAltStrCount("ToddlerToddlerTODDLERtodDler", "toddler"));
 
 // Q2.
 /*
@@ -73,7 +86,21 @@ who live to the left side of the company is represented with a negative sign. Th
 to the right side of the company is represented with a positive sign. The cab will be allotted a range of distance. The
 company wants to find the distance for the employees who live within the particular distance range.
 Write an algorithm to find the distance for the employees who live within the distance range.
+ */
+function findDist(d, minD, maxD){
+    let result = []
 
+    for(let i = 0; i<d.length; i++){
+        if(d[i] >= minD && d[i] <= maxD){
+            result.push(d[i])
+        }
+    }
+    return result;
+}
+// console.log(findDist([-12, -5, 0, 3, 9, 15], -5, 10))
+// console.log(findDist([-20, -15, -10, -5, 0, 5, 10, 15], -10, 5))
+
+/*
 Q2.
 You are given a list of integers of size N. Write an algorithm to sort the first K elements (from list[0] to list[K-1]) of the
 list in ascending order and the remaining (list[K] to list[N-1]) elements in descending order.
@@ -88,7 +115,7 @@ function intSort(n, k, list){
     return arrLeft.concat(arrRight);
     
 }
-console.log(intSort(12, 6, intList))
+// console.log(intSort(12, 6, intList))
 
 /*
 Automata Pro
@@ -123,7 +150,36 @@ In a science research lab, combining two nuclear chemicals produces a maximum en
 energy of the two chemicals. The energy values of the chemicals can be negative or positive. The scientist wants to
 calculate the sum of the energies of the two chemicals which produces maximum energy on reaction.
 Write an algorithm to find the sum of the energy of the two chemicals which produces maximum energy on reaction.
-
-
-
 */
+function findEnergySum1(arr) { //wrong cause assumes that the last two numbers always gives the best solution
+   
+    arr.sort((a, b) => a - b)
+    console.log(arr)
+    
+   if(arr[arr.length-1] < 0){
+    return arr[0] + arr[1]
+   } else {
+    return arr[arr.length-1] + arr[arr.length-2]
+   }
+}
+
+// console.log(findEnergySum1([-20, -10, 1, 5]))
+
+function findEnergySum(arr){
+    arr.sort((a, b) => a - b)
+    console.log(arr)
+
+    let positiveNumPrdt = arr[arr.length-1] * arr[arr.length-2];
+    let NegativeNumPrdt = arr[0] * arr[1];
+
+    if(positiveNumPrdt > NegativeNumPrdt){
+        return arr[arr.length-1] + arr[arr.length-2]
+    } else {
+        return arr[0] + arr[1]
+    }
+
+
+}
+
+// console.log(findEnergySum([-1, -7, -3, -4]))
+// console.log(findEnergySum([1, 7, 3, 4]))
