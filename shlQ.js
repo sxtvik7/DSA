@@ -140,7 +140,6 @@ Write an algorithm to help the company identify the minimum number of straight l
 the pickup locations, covering every pickup location.
 
  */
-
 // ____________________________  ____________________________  ____________________________  ____________________________
 
 // Automata
@@ -177,9 +176,25 @@ function findEnergySum(arr){
     } else {
         return arr[0] + arr[1]
     }
-
-
 }
 
 // console.log(findEnergySum([-1, -7, -3, -4]))
 // console.log(findEnergySum([1, 7, 3, 4]))
+
+let str = "7 2 9 4 1 5";
+let arr = str.trim().split(" ").map(Number);
+
+// console.log(arr)
+
+
+let input = `
+6 3 5
+7 2 9 4 1 5`;
+
+let lines = input.trim().split('\n');
+let [n, k, l] = lines[0].trim().split(/\s+/).map(Number)
+let arry = lines[1].trim().split(" ").map(Number);
+
+// console.log(lines);
+// console.log(n, k, l);
+// console.log(arry);

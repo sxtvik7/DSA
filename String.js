@@ -23,40 +23,40 @@
 
 //Given:"Hello World"  Result:"HeLo wOrLd"
 
-// const capLetter = (string)=>{
-// final=[]
-// for(let i=0; i < string.length; i++){
-//     if(i%2===0){
-//         final.push(string.charAt(i).toUpperCase());
-//         } else {
-//             final.push(string.charAt(i));
-//     }
-//   }
-// console.log(final.toString());
-// }
+function capLetter (string){
+final=[]
+for(let i=0; i < string.length; i++){
+    if(i%2===0){
+        final.push(string.charAt(i).toUpperCase());
+        } else {
+            final.push(string.charAt(i));
+    }
+  }
+console.log(final.toString());
+}
 
 
-// const capLetter = (string)=>{
-//     let final=""
-//     for(let i=0; i < string.length; i++){
-//         if(i%2===0){
-//             final += string[i].toUpperCase()
-//             } else {
-//             final += string[i].toLowerCase()
-//         }
-//       }
-//     return final
-//     }
+const capLetter = (string)=>{
+    let final=""
+    for(let i=0; i < string.length; i++){
+        if(i%2===0){
+            final += string[i].toUpperCase()
+            } else {
+            final += string[i].toLowerCase()
+        }
+      }
+    return final
+    }
     
     // console.log(capLetter("Hello World"));
 
-    // const demo= (word)=>{
-    //     console.log(word.length);
-    // }
-//     let str = "hello World"
-//     demo(str)    
+    const demo= (word)=>{
+        console.log(word.length);
+    }
+    let str = "hello World"
+    demo(str)    
 
-//  const arr = [1,2, [3, 4, [5, 6, [7, 8]]]]
+ const arr = [1,2, [3, 4, [5, 6, [7, 8]]]]
 // console.log(arr.flat(3));
 
 //------------------------------------------------
@@ -68,49 +68,46 @@
 // console.log(result);console.log(result1);
 //------------------------------------------------
 
-// function quickCheck(arr, elem) {
-//     //  console.log(elem);
-//      let result = arr.indexOf(elem)
+function quickCheck(arr, elem) {
+    //  console.log(elem);
+     let result = arr.indexOf(elem)
 
-//      if(result == -1){
-//         return false
-//      }
-//         return true
+     if(result == -1){
+        return false
+     }
+        return true
 
-//   }
+  }
   
 //   console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 //   console.log(quickCheck(["onions", "squash", "shallots"], "onions"));
 //   console.log(quickCheck([3, 5, 9, 125, 45, 2], 125));
 //------------------------------------------------
-// const users = {
-//     Alan: {
-//       online: false
-//     },
-//     Jeff: {
-//       online: true
-//     },
-//     Sarah: {
-//       online: false
-//     }
-//   }
+const users = {
+    Alan: {
+      online: false
+    },
+    Jeff: {
+      online: true
+    },
+    Sarah: {
+      online: false
+    }
+  }
   
-//   function countOnline(allUsers) {
-//     // Only change code below this line
-//     let result = 0
+  function countOnline(allUsers) {
+    // Only change code below this line
+    let result = 0
 
-//       for (const user in allUsers){
-//         console.log(allUsers[user].online)
+      for (const user in allUsers){
+        console.log(allUsers[user].online)
         
-//         if(allUsers[user].online === true){
-//            result++;
-//         }
-//       }
-//       return result
-//     // Only change code above this line
-//   }
-  
-//   console.log(countOnline(users));
+        if(allUsers[user].online === true){
+           result++;
+        }
+      }
+      return result
+    // Only change code above this line
+  }
+  console.log(countOnline(users));
 //------------------------------------------------
-
- 

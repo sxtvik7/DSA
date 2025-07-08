@@ -42,4 +42,33 @@ let sampleInput = `
 3
 8 4 2`;
 
-simulateInput(sampleInput);
+// simulateInput(sampleInput);
+
+
+const input = `
+3
+1 1 1
+3
+1 1 2 1
+2 1 2
+2 2 3
+`;
+
+let index = 1
+
+const lines = input.trim().split("\n")
+console.log(lines);
+
+let arr = lines[index++].split(" ").map(Number)
+// console.log(arr)
+
+const q = parseInt(lines[index++]);
+// console.log(q)
+
+let queries = [];
+
+for(let i = 0; i<q; i++){
+    const query = lines[index++].split(" ").map(Number);
+    queries.push(query);
+}
+// console.log(queries)
