@@ -406,7 +406,180 @@ function checkAge(arr) {
 }
 
 const indexFinder = arr.findIndex((num) => {return num > 2})
-console.log(indexFinder)
+// console.log(indexFinder)
 
 const filter = arr.filter((num) => {return num > 3 })
-console.log(filter)
+// console.log(filter)
+
+console.log("Array.js")
+
+function  makeUniqueArray(arr){
+  let map = new Map();
+  let result = 0;
+
+  for(let char of arr){
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+
+  for(let char of map){
+    if(char[1]>1){
+      result += char[1] - 1;
+    }
+  }
+  return result;
+}
+// console.log(makeUniqueArray([1, 2, 1, 2]));
+
+function pairSum(arr, k){
+
+  if(arr.length<1) return -1
+
+  let map = new Map();
+  let result = 0;
+
+  for(let char of arr){ 
+    let compliment = k - char
+    
+    if(map.has(compliment)){
+      result += 1;
+    }
+
+    map.set(char, (map.get(char) || 0) + 1)
+  }
+
+  if(result == 0) return -1;
+  else return result;
+}
+// console.log(pairSum([1, 2, 3, 4], 5)); // Expected: 2, Your Code Returns: 3
+
+function pairSum(arr, k){
+  let start = 0;
+  let end = arr.length - 1;
+  let count = 0;
+  // console.log(arr[end] + arr[start])
+
+  while(start < end){
+    let sum = arr[start] + arr[end];
+    if(sum == k){
+      count++;
+      start++;
+      end--;
+    } else if (sum < k){
+      start++;
+    } else {
+      end--;
+    }
+  }
+
+  return count === 0 ? -1 : count;
+}
+// console.log(pairSum([1, 2, 3, 4, 5, 6], 7));
+
+function intersectionOfArr(arr1, arr2){
+  let map = new Map();
+  let result = [];
+
+  for(let char of arr1){
+    map.set(char, (map.get(char) || 0) + 1);
+  }
+
+  for(let char of arr2){
+    if(map.has(char)){
+      result.push(char)
+      map.set(char, map.get(char) - 1)
+      if(map.get(char)<1){
+        map.delete(char);
+      }
+    }
+  }
+  // console.log(map);
+  return result;
+}
+// console.log(intersectionOfArr([1, 2, 2, 2, 3, 4], [2, 2, 3, 3]));
+
+function moveZeros(arr){
+  let index = 0;
+
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i] !== 0) {
+      [arr[index], arr[i]] = [arr[i], arr[index]];
+      index++;
+    }
+  }
+  return arr;
+}
+// console.log(moveZeros([2, 0, 4, 1, 3, 0, 28]));
+
+function sqrt(n){
+  return Math.floor(Math.sqrt(n))
+}
+// console.log(sqrt(7))
+
+function MaxSubArrSum(arr){
+  
+  let maxSum = arr[0];
+  let currSum = arr[0];
+
+  for(let i = 1; i<arr.length; i++){
+    currSum = Math.max(arr[i], currSum + arr[i]);
+    maxSum = Math.max(maxSum, currSum);
+  }
+  return maxSum;
+}
+// console.log(MaxSubArrSum([1, 2, 7, -4, 3, 2, -10, 9, 1])) //Output: 11
+// console.log(MaxSubArrSum([-1, 2, 3, 4, 5]))
+
+function searchInRotatedArr(arr, q){
+  let map = new Map();
+  let result = [];
+
+  for(let i = 0; i<arr.length; i++){
+    map.set(arr[i], i);
+  }
+
+  for(let char of q){
+    if(map.has(char)){
+      result.push(map.get(char))
+    }else{
+      result.push(-1);
+    }
+  }
+
+  return result;
+}
+// console.log(searchInRotatedArr([2, 5, -3, 0], [5, 1]));
+
+function searchInRotatedArr(arr, q) {
+  function binarySearch(arr, key){
+    let low = 0;
+    let high = arr.length - 1;
+
+    while(low<high){
+      let mid = Math.floor((low + high) / 2);
+      if(arr[mid] === key) return mid;
+
+      if(arr[mid] <= arr[low]){
+        if(key >= arr[low] && key < arr[mid]){
+          high = mid - 1
+        } else {
+          low = mid + 1
+        }
+      } else {
+        if(key > arr[mid] && key <= arr[high]){
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+    }
+    return - 1
+  }
+
+  let result = [];
+  for(let key of q){
+    result.push(binarySearch(arr, key))
+  }
+
+  return result;
+}
+console.log(searchInRotatedArr([2, 5, -3, 0], [5, 1]));

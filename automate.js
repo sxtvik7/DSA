@@ -21,7 +21,7 @@ const swap = (a, b) => {
 
     a = a - b;
     console.log(a)
-
+    
     return[a, b]
 }
 
@@ -523,15 +523,16 @@ function findDuplicate (arr) {
 // First Missing Positive
 
 function firstMissingPositive(arr) {
-    let n = arr.length;
+    let n = arr.length; 
 
     for(let i = 0; i<=n; i++){
         while (arr[i] > 0 && arr[i] <= n && arr[arr[i] -1] !== arr[i]){
             [arr[arr[i] -1], arr[i]] = [arr[i], arr[arr[i] - 1]]
         }
+
+        console.log(arr)
     }
 
-    console.log(arr)
 
     for(let i = 0; i<n; i++){
         // console.log(`${arr[i]} !== ${i+1} ? ${arr[i] !== i+1}`)
@@ -539,10 +540,14 @@ function firstMissingPositive(arr) {
             return i + 1;
         }
     }
+
+    return n + 1;
 }
 
-// console.log(firstMissingPositive([3, 4, -1, 1]))
-// console.log(firstMissingPositive([3, 2, -6, 1, 0]))
+// console.log(firstMissingPositive([-3, -4, -1, -2]))
+// console.log(firstMissingPositive([-40, -39, -46, -38, -13, -30, -26, -28, -37, -36]))
+console.log(firstMissingPositive([3, 4, -1, 1]))
+// console.log(firstMissingPositive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 // console.log(firstMissingPositive([7, 8, 1, 11]));
 
 function newSort (arr) {
@@ -971,13 +976,13 @@ function highScoring(arr){
 
     return topStudents.sort()[0];
 }
-console.log(highScoring(
-    [
-  "Riya:Math",
-  "Aman:Physics",
-  "Riya:Chemistry",
-  "Aman:Math",
-  "Riya:Math",   
-  "Karan:Math"
-]
-))
+// console.log(highScoring(
+//     [
+//   "Riya:Math",
+//   "Aman:Physics",
+//   "Riya:Chemistry",
+//   "Aman:Math",
+//   "Riya:Math",   
+//   "Karan:Math"
+// ]
+// ))

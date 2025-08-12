@@ -32,11 +32,11 @@ for(let i=0; i < string.length; i++){
             final.push(string.charAt(i));
     }
   }
-console.log(final.toString());
+// console.log(final.toString());
 }
 
 
-const capLetter = (string)=>{
+function capLetter (string){
     let final=""
     for(let i=0; i < string.length; i++){
         if(i%2===0){
@@ -109,5 +109,16 @@ const users = {
       return result
     // Only change code above this line
   }
-  console.log(countOnline(users));
+  // console.log(countOnline(users));
 //------------------------------------------------
+
+function strWrdRev(str){
+  let result = [];
+  let arr = str.split(" ");
+
+  for(let i = arr.length-1; i>=0; i--){
+    result.push(arr[i]);
+  }
+  return result.join(" ");
+}
+// console.log(strWrdRev("Welcome to Coding Ninjas"));

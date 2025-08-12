@@ -71,5 +71,15 @@ function minInitialOil(c, arr){
     return Math.max(0, -minLevel)
 }
 
-console.log(minInitialOil(3, [1, -1, -1]))
+// console.log(minInitialOil(3, [1, -1, -1]))
 // console.log(minInitialOil(3, [1, 1, 1, 1]))
+
+function gcd(a, b){
+    while(b !== 0){
+        [a, b] = [b, a%b];
+    }
+    return a;
+}
+
+console.log(gcd(1, 5));
+// console.log(12%6);
