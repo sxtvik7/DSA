@@ -434,7 +434,7 @@ function stringCompression(str){
     let result = "";
 
     for(let i = 0; i<str.length; i++){
-        console.log(str[i], count)
+        // console.log(str[i], count)
         if(str[i] === str[i+1]){
             count++ 
         } else {
@@ -443,10 +443,11 @@ function stringCompression(str){
         }
     }
 
-    return result.length < str.length ? result : str;
+    // return result.length < str.length ? result : str;
+    return result
 }
 
-// console.log(stringCompression("aaabbc")) // "a3b2c1"
+console.log(stringCompression("aaabbc")) // "a3b2c1"
 
 // ____________________________________________
 
@@ -546,7 +547,7 @@ function firstMissingPositive(arr) {
 
 // console.log(firstMissingPositive([-3, -4, -1, -2]))
 // console.log(firstMissingPositive([-40, -39, -46, -38, -13, -30, -26, -28, -37, -36]))
-console.log(firstMissingPositive([3, 4, -1, 1]))
+// console.log(firstMissingPositive([3, 4, -1, 1]))
 // console.log(firstMissingPositive([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 // console.log(firstMissingPositive([7, 8, 1, 11]));
 

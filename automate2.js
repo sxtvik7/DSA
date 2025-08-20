@@ -340,4 +340,95 @@ function threeSum(arr){
     }
     return result;
 }
-console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+// console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+// ____________________________________________________________________-
+// LeetCode 238 - productExceptSelf
+
+// brute force
+function productExceptSelf(arr){
+    let res = [];
+    for(let i = 0; i<arr.length; i++){
+        let n = 0; 
+        let total = 1;
+
+        while(n<arr.length){
+            if(n !== i){
+                total = total * arr[n];
+            }
+            n++;
+        }
+        res.push(total)
+    }
+    return res;
+}
+// console.log(productExceptSelf([1, 2, 3, 4]))
+// ____________________________________________________________________-
+// LeetCode 42 - trap water
+function prefixMax(arr){
+    let res = [...arr]
+    for(let i = 0; i<res.length - 1; i++){
+        if(res[i] > res[i+1]){
+            res[i+1] = res[i]
+        }
+    }
+    return res;
+}
+// console.log(prefixMax([1,2,3,4]))
+
+function suffixMax(arr){
+    let res = [...arr];
+    for(let i = res.length-1; i>0; i--){
+        if(res[i]>res[i-1]){
+            res[i-1] = res[i]
+        }
+    }
+    return res;
+}
+// console.log(suffixMax([1,2,3,4]))
+
+
+
+function minBoundaries(arr) {
+    let left = prefixMax(arr);
+    let right = suffixMax(arr);
+    let total = 0;
+
+    for(let i = 0; i<arr.length; i++){
+
+        let minBound = Math.min(left[i], right[i]);
+        total += Math.max(0, minBound - arr[i]);     
+    }
+
+    return total
+}
+
+// console.log(minBoundaries([3,0,2]))
+// console.log(minBoundaries([4,2,0,3,2,5]))
+// console.log(minBoundaries([3,0,2,4]))
+// console.log(minBoundaries([2, 1, 5, 3, 4]))
+
+function trapWater(arr){
+
+    let left = [...arr];
+    for(let i = 0; i<left.length - 1; i++){
+        if(left[i] > left[i+1]){
+            left[i+1] = left[i];
+        }
+    }
+
+    let right = [...arr];
+    for(let i = right.length; i>0; i--){    
+        if(right[i] > right[i-1]){
+            right[i-1] = right[i];
+        }
+    }
+
+    let total = 0;
+
+    for(let i = 0; i<arr.length; i++){
+        total += Math.min(left[i], right[i]) - arr[i];
+    }
+
+    return total;
+}
+// console.log(trapWater([3, 0, 2, 4]))

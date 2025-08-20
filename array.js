@@ -450,7 +450,7 @@ function pairSum(arr, k){
   if(result == 0) return -1;
   else return result;
 }
-// console.log(pairSum([1, 2, 3, 4], 5)); // Expected: 2, Your Code Returns: 3
+// console.log(pairSum([1, 2, 3, 4], 5)); // Expected: 2, my Code Returns: 3
 
 function pairSum(arr, k){
   let start = 0;
@@ -515,6 +515,7 @@ function sqrt(n){
 }
 // console.log(sqrt(7))
 
+// Kadane’s Algoritm ----------------->
 function MaxSubArrSum(arr){
   
   let maxSum = arr[0];
@@ -582,4 +583,41 @@ function searchInRotatedArr(arr, q) {
 
   return result;
 }
-console.log(searchInRotatedArr([2, 5, -3, 0], [5, 1]));
+// console.log(searchInRotatedArr([2, 5, -3, 0], [5, 1]));
+
+function separateNegativeAndPositive(arr){
+  let index = 0;
+
+  for(let i = 0; i<arr.length; i++){
+    if(arr[i] < 0){
+      [arr[index], arr[i]] = [arr[i], arr[index]];
+      index++;
+    }
+  }
+  return arr;
+}
+// console.log(separateNegativeAndPositive([1, 2, -3, 4, -4, -5]))
+
+function maxArea(arr){
+  let maxArea = 0;
+  let left = 0;
+  let right = arr.length - 1;
+
+  while(left < right){
+    let l = Math.min(arr[left], arr[right]);
+    let b = right - left;
+    let area = l * b;
+    maxArea = Math.max(maxArea, area);
+    
+    if(arr[left] < arr[right]){
+      left++;
+    }else{
+      right--;
+    }
+  }
+
+  return maxArea
+}
+
+// console.log(maxArea([4, 3, 2, 1, 4]));
+console.log(maxArea([1,8,6,2,5,4,8,3,7]));
