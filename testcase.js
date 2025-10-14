@@ -57,7 +57,7 @@ const input = `
 let index = 1
 
 const lines = input.trim().split("\n")
-console.log(lines);
+// console.log(lines);
 
 let arr = lines[index++].split(" ").map(Number)
 // console.log(arr)
@@ -72,3 +72,4 @@ for(let i = 0; i<q; i++){
     queries.push(query);
 }
 // console.log(queries)
+

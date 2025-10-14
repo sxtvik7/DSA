@@ -178,5 +178,159 @@ function palindrom(num){
   }
 
 }
-console.log(palindrom(121))
-console.log(palindrom(123))
+// console.log(palindrom(121))
+// console.log(palindrom(123))
+
+function rotateMatrix(matrix) {
+  let n = matrix.length;
+
+  // Step 1: Transpose the matrix
+  for (let i = 0; i < n; i++) {
+    for (let j = i; j < n; j++) {
+      let temp = matrix[i][j];
+      matrix[i][j] = matrix[j][i];
+      matrix[j][i] = temp;
+    }
+  }
+
+  // Step 2: Reverse each row 
+  for (let i = 0; i < n; i++) {
+    matrix[i].reverse();
+  }
+  return matrix;
+}
+// console.log(rotateMatrix([[0,1,1],[1,0,0],[1,0,0]]))
+let result = rotateMatrix([
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]);
+
+// result.forEach(row => console.log(row));
+
+function setZero(matrix){
+  let m = matrix.length;
+  let n = matrix[0].length;
+
+  let rows = new Array(m).fill(false);
+  let cols = new Array(n).fill(false);
+
+  for(let i = 0; i<m; i++){
+    for(let j = 0; j<n; j++){
+
+      console.log(matrix[i][j])
+      if(matrix[i][j] === 0){
+        rows[i] = true;
+        cols[j] = true;
+      }
+    }
+  }
+
+  // console.log(rows)
+  // console.log(cols)
+
+  for(let i = 0; i<m; i++){
+    for(let j = 0; j<n; j++){
+      if(rows[i] || cols[j]){
+        matrix[i][j] = 0;
+      }
+    }
+  }
+  return matrix;
+
+}
+
+let mat = [
+  [1, 2, 3],
+  [4, 0, 6],
+  [7, 8, 9]
+];
+
+// console.log(setZero(mat));
+
+function add(a, b){
+  while(b !== 0){
+    let sum = a ^ b;
+    let carry = (a & b) << 1;
+
+    console.log(sum)
+
+    a = sum;
+    b = carry;
+  }
+  return a;
+}
+// console.log(add(5, 3)); 
+
+function isLeap(year){
+  return(year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+function addDays(day, month, year, x){
+  const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  while(x > 0){
+    let daysThisMonth = daysInMonth[month - 1];
+
+    if(month === 2 && isLeap(year)) {
+      daysThisMonth = 29;
+    }
+
+    let remainigDays = daysThisMonth - day;
+
+    if(x <= remainigDays) {
+      day += x;
+      x=0
+    } else {
+      x -= (remainigDays + 1)
+      day = 1;
+      month++;
+
+      if(month > 12) {
+        month = 1;
+        year++
+      }
+    }
+  }
+
+  return `${String(day).padStart(2, 0)}/${String(month).padStart(2, 0)}/${year}`;
+}
+// console.log(addDays(28, 2, 2024, 2));
+
+function spiralOrder(matrix) {
+  let result = [];
+   if (matrix.length === 0) return result;
+
+   let top = 0,
+      bottom = matrix.length - 1,
+      left = 0,
+      right = matrix[0].length - 1;
+
+  while(top < bottom && left <= right){
+    // left-right
+    for(let j = left; j<right; j++){
+      result.push(matrix[top][j]);
+    }
+    top++
+
+    // top-bottom
+    for(let i = top; i<=bottom; i++){
+      result.push(matrix[i][right])
+    }
+    // right-left
+
+    // bottom-top
+  }
+  
+
+  return result;
+}
+
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+console.log(spiralOrder(matrix)); 
+// Expected: [1, 2, 3, 6, 9, 8, 7, 4, 5]

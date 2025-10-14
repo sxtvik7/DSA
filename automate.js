@@ -200,7 +200,8 @@ function twoSum(arr, target){
         const complemnt = target - arr[i]
 
         if(map.has(complemnt)){
-            return[map.get(complemnt), i]
+            // return[map.get(complemnt), i]
+            return[arr[map.get(complemnt)], arr[i]]
         }
 
         // console.log(map)
@@ -209,7 +210,7 @@ function twoSum(arr, target){
     return [];
 }
 
-// console.log(twoSum([15, 11, 7, 5, 2], 9))
+console.log(twoSum([15, 11, 7, 5, 2], 9))
 
 
 
@@ -588,19 +589,19 @@ let list = [head, node2]
 
 function hasCycle(head) {
 
-    let tortoise = head
-    let hare = head
+    let tortoise = head;
+    let hare = head;
 
     while(hare !== null && hare.next !== null){
         tortoise = tortoise.next;
         hare = hare.next.next;
 
-        if(tortoise === hare) {
-            return true;
+        if(tortoise === hare){
+            return true
         }
     }
 
-    return false;
+    return false;   
 }
 
 // console.log(hasCycle(head))

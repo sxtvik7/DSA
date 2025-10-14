@@ -40,3 +40,10 @@ let map = new Map();
     return freq
 }
 // console.log(freqInArr([1, 2, 3, 3, 3, 2, 1, 5]));
+
+function getProductArray(arr){
+    let n = arr.length;
+    const result = new Array(n).fill(1);
+    console.log(result)
+}
+console.log(getProductArray([1, 2, 3, 4]));

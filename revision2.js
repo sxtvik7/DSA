@@ -215,13 +215,14 @@ const findMissNum = (arr) => {
   // }
   // return false
 
-  const N = arr.length + 1;
+  const N = arr[arr.length-1];
+  // console.log(N)
   const expectedSum = (N * (N + 1)) / 2;
   const actualSum = arr.reduce((a, b) => a + b, 0);
   return expectedSum - actualSum;
 };
 
-// console.log(findMissNum([1, 2, 4, 5, 6]))
+console.log(findMissNum([1, 2, 4, 5, 6]))
 
 // let arr = [1, 2, 3, 4, 5];
 // [arr[0], arr[4]] = [arr[4], arr[0]];
@@ -492,7 +493,7 @@ function removeDuplicate(arr) {
   }
   return arr.slice(0, i + 1);
 }
-// console.log(removeDuplicate([1, 1, 2, 2, 3, 4, 4]));
+console.log(removeDuplicate([1, 1, 2, 2, 3, 4, 4]));
 
 function filterWeights(arr) {
   return arr.filter((w) => w < 10 || w > 100);
